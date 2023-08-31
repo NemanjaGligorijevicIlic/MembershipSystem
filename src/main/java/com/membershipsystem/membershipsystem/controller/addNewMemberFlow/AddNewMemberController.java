@@ -4,6 +4,7 @@ import com.membershipsystem.membershipsystem.model.Member;
 import com.membershipsystem.membershipsystem.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,10 +14,19 @@ public class AddNewMemberController {
     MemberService memberService;
 
     @RequestMapping("sendToCheck")
-    public ModelAndView checkForNewMember(@ModelAttribute("member") Member member){
-        ModelAndView mav = new ModelAndView("addMember/confirmNewMember");
-        mav.addObject("member", member);
-        return mav;
+    public ModelAndView checkForNewMember(@ModelAttribute("member") Member member, Model model){
+        ModelAndView mav;
+
+        if(AddNewMemberHelper.fieldsPopulated(member)) {
+            mav = new ModelAndView("addMember/confirmNewMember");
+            mav.addObject("member", member);
+            return mav;
+        } else {
+            mav = new ModelAndView("addMember/memberAdd");
+            mav.addObject("member", member);
+            mav.addObject("errorMessage", "Both Firstname and Lastname are required.");
+            return mav;
+        }
     }
 
     @RequestMapping("goBackNewMember")

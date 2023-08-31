@@ -27,9 +27,15 @@
         </tr>
     </table>
 </form:form>
-<c:if test="${not empty errorMessage}">
-    <p>${errorMessage}</p>
-</c:if>
+<p id="errorMessage" class="hidden">${errorMessage}</p>
+<button onclick="window.location.href = 'goToFirstPage'">Go to first page</button>
+<script>
+    // Display error message if present
+    var errorMessage = document.getElementById("errorMessage");
+    if (errorMessage.textContent.trim() !== "") {
+        errorMessage.classList.remove("hidden");
+    }
+</script>
 <button onclick="window.location.href = 'goToFirstPage'">Go to first page</button>
 </body>
 </html>

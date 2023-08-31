@@ -4,18 +4,21 @@ import com.membershipsystem.membershipsystem.model.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BaseFlowController {
 
-    @GetMapping("goToFirstPage")
+    @RequestMapping("goToFirstPage")
     public String goToFirstPage(){
         return "frontPage/frontPage";
     }
-
-    @GetMapping("memberAdd")
-    public String memberAdd(@ModelAttribute ("member")Member member){
-        return "addMember/memberAdd";
+    @RequestMapping("memberAdd")
+    public ModelAndView memberAdd(@ModelAttribute ("member")Member member){
+        ModelAndView mav = new ModelAndView("addMember/memberAdd");
+        mav.addObject("errorMessage", null);
+        return mav;
     }
 
     @GetMapping("memberShow")
