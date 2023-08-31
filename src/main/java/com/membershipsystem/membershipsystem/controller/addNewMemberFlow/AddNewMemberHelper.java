@@ -11,12 +11,9 @@ public class AddNewMemberHelper {
     }
 
     public static Long generateMemberId(MemberService memberService) {
-        Long id;
-        while(true){
+        Long id = generateCustomId();
+        while(existsMemberWithThatId(memberService, id)){
             id = generateCustomId();
-            if(!existsMemberWithThatId(memberService, id)) {
-                break;
-            }
         }
         return id;
     }
@@ -29,6 +26,7 @@ public class AddNewMemberHelper {
         Long memberId;
         long maxIdValue = 9999999L; // Maximum value of a 7-digit ID
         long minIdValue = 1000000L; // Minimum value of a 7-digit ID
-        return memberId = ThreadLocalRandom.current().nextLong(minIdValue, maxIdValue + 1);
+        memberId = ThreadLocalRandom.current().nextLong(minIdValue, maxIdValue + 1);
+        return memberId;
     }
 }
