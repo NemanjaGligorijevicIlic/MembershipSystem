@@ -4,7 +4,6 @@ import com.membershipsystem.membershipsystem.model.Member;
 import com.membershipsystem.membershipsystem.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,7 +13,7 @@ public class AddNewMemberController {
     MemberService memberService;
 
     @RequestMapping("sendToCheck")
-    public ModelAndView checkForNewMember(@ModelAttribute("member") Member member, Model model){
+    public ModelAndView checkForNewMember(@ModelAttribute("member") Member member){
         ModelAndView mav;
 
         if(AddNewMemberHelper.fieldsPopulated(member)) {
@@ -37,9 +36,12 @@ public class AddNewMemberController {
     }
 
     @PostMapping("submitMember")
-    public String addNewMember(@ModelAttribute("member") Member member){
+    public ModelAndView addNewMember(@ModelAttribute("member") Member member){
+        ModelAndView mav = new ModelAndView("addMember/confirmation");
+        member.setMemberId(AddNewMemberHelper.generateMemberId(memberService));
         memberService.addMember(member);
-        return "frontPage/frontPage";
+        //Member m = memberService.getMember(member.getMemberId())
+        return mav;
     }
 
     @RequestMapping("aa")

@@ -1,14 +1,12 @@
 package com.membershipsystem.membershipsystem.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 @Entity(name="Member")
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
     private String firstName;
     private String lastName;

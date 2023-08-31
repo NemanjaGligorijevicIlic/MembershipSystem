@@ -21,9 +21,8 @@ public class MemberService {
     }
 
     @PostMapping
-    public String addMember(@ModelAttribute("member") Member member){
+    public void addMember(@ModelAttribute("member") Member member){
         memberRepository.saveAndFlush(member);
-        return "addMember/memberAdd";
     }
 
     public List<Member> getAllMembers() {

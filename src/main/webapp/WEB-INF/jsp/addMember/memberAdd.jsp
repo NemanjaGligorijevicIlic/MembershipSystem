@@ -9,6 +9,7 @@
 <body>
 <h1>Add a new member</h1>
 <form:form modelAttribute="member" action="sendToCheck">
+    <input type="hidden" name="memberId" value="${member.memberId}" />
     <table>
         <tr>
             <div>
@@ -28,7 +29,7 @@
     </table>
 </form:form>
 <p id="errorMessage" class="hidden">${errorMessage}</p>
-<button onclick="window.location.href = 'goToFirstPage'">Go to first page</button>
+<button onclick="window.location.href = 'goToFirstPage'">Go to start</button>
 <script>
     // Display error message if present
     var errorMessage = document.getElementById("errorMessage");
