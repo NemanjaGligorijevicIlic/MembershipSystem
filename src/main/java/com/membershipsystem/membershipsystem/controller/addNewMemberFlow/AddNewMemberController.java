@@ -40,7 +40,7 @@ public class AddNewMemberController {
         ModelAndView mav = new ModelAndView("addMember/confirmation");
         member.setMemberId(AddNewMemberHelper.generateMemberId(memberService));
         memberService.addMember(member);
-        //Member m = memberService.getMember(member.getMemberId())
+        mav.addObject(memberService.getMember(member.getMemberId()));
         return mav;
     }
 
