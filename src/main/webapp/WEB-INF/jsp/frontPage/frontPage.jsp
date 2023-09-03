@@ -52,6 +52,7 @@
     <a class="button" href="memberAdd">Add new member</a>
     <a class="button" href="showAllMember">Show all members</a>
     <a class="button" href="findMemberByIdPage">Update existing member</a>
+    <a class="button" href="addNewCar">Add a new car</a>
 </div>
 </body>
 </html>

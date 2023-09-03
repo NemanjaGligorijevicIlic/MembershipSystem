@@ -43,13 +43,4 @@ public class AddNewMemberController {
         mav.addObject(memberService.getMember(member.getMemberId()));
         return mav;
     }
-
-    @RequestMapping("aa")
-    public ModelAndView aaa(@ModelAttribute("member") Member member){
-        ModelAndView mav = new ModelAndView("addMember/aa");
-        mav.addObject("member", member);
-        return mav;
-    }
-
-
 }
