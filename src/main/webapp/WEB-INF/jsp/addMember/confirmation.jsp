@@ -25,7 +25,6 @@
             <td>Description:</td>
             <td>${member.description}</td>
         </tr>
-
     </table>
 </form:form>
 <button onclick="window.location.href='goToFirstPage'">Go to first page</button>
