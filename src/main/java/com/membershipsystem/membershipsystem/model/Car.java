@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 public class Car {
     @Id
     private Long carId;
+    private String registration;
     private String model;
     private String year;
     private String description;
@@ -52,5 +53,13 @@ public class Car {
 
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    public void setRegistration(String registration){
+        this.registration = registration;
+    }
+
+    public String getRegistration(){
+        return registration;
     }
 }

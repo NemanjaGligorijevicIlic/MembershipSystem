@@ -12,15 +12,15 @@
     <input type="hidden" name="memberId" value="${member.memberId}" />
     <table>
         <tr>
-            <div>
+            <td>
                 Firstname: <form:input path="firstName"/>
-            </div>
-            <div>
+            </td>
+            <td>
                 Lastname: <form:input path="lastName"/>
-            </div>
-            <div>
+            </td>
+            <td>
                 Description: <form:input path="description"/>
-            </div>
+            </td>
         </tr>
         <tr>
             <td colspan="3"> <input type="submit" value="Confirm">

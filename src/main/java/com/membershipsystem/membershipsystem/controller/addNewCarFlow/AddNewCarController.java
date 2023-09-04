@@ -1,5 +1,6 @@
 package com.membershipsystem.membershipsystem.controller.addNewCarFlow;
 
+import com.membershipsystem.membershipsystem.model.Car;
 import com.membershipsystem.membershipsystem.model.Member;
 import com.membershipsystem.membershipsystem.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +20,33 @@ public class AddNewCarController {
         return "addNewCar/createOrFindMember";
     }
 
+    @RequestMapping("findMemberByIdInput")
+    public ModelAndView inputMemberId(@ModelAttribute("member") Member member){
+        ModelAndView mav = new ModelAndView("addNewCar/findMember");
+        mav.addObject("member", member);
+        return mav;
+    }
+
     @RequestMapping("findMemberById")
-    public ModelAndView findMemberById(@ModelAttribute("member") Member member){
+    public ModelAndView findMemberById(@ModelAttribute("member") Member member, Car car){
         Member m = null;
         ModelAndView mav;
 
         if(member.getMemberId() != null) {
             m = memberService.getMember(member.getMemberId());
         } else {
-            mav = new ModelAndView("findMember");
+            mav = new ModelAndView("addNewCar/findMember");
             mav.addObject("errorMessage", "Member ID can not be empty. Your need to provide it!");
             return mav;
         }
 
         if (m == null) {
-            mav = new ModelAndView("findMember");
+            mav = new ModelAndView("addNewCar/findMember");
             mav.addObject("errorMessage", "Member not found");
         } else {
-            mav = new ModelAndView("updateMember");
+            mav = new ModelAndView("addNewCar/addCarInput");
             mav.addObject("member", m);
+            mav.addObject("car", car);
         }
 
         return mav;
