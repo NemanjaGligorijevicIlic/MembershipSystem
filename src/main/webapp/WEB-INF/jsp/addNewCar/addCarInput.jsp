@@ -22,7 +22,7 @@
 </head>
 <body>
 <h1>Car will be added to this member:</h1>
-<form:form modelAttribute="member">
+<form:form modelAttribute="member" action="checkForCar">
     <table>
         <tr>
             <th>Attribute</th>
@@ -46,10 +46,31 @@
         </tr>
     </table>
 </form:form>
-<form:form modelAttribute="car">
+<form:form modelAttribute="car" action="checkForCar">
+    <input type="hidden" name="memberId" value="${member.memberId}" />
     <table>
         <tr>
-            <td></td>
+            <td>
+                Registration number: <form:input path="registration"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Model: <form:input path="model"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Year: <form:input path="year"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 Description: <form:input path="description"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"> <input type="submit" value="Submit">
         </tr>
     </table>
 </form:form>

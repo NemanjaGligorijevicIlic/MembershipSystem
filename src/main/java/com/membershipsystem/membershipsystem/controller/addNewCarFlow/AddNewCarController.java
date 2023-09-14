@@ -51,4 +51,11 @@ public class AddNewCarController {
 
         return mav;
     }
+
+    @RequestMapping("checkForCar")
+    public ModelAndView checkForCar(@ModelAttribute("car")Member member, Car car){
+        ModelAndView mav = null;
+
+        return mav;
+    }
 }
