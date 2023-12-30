@@ -1,5 +1,6 @@
 package com.membershipsystem.membershipsystem.controller.API;
 
+import com.membershipsystem.membershipsystem.AWSLambda.LambdaInvoker;
 import com.membershipsystem.membershipsystem.model.Member;
 import com.membershipsystem.membershipsystem.repository.MemberRepository;
 import com.membershipsystem.membershipsystem.service.MemberService;
@@ -18,6 +19,7 @@ public class MemberApi {
     @GetMapping
     @RequestMapping("{id}")
     public Member get(@PathVariable Long id){
+        LambdaInvoker.invokeLambdaFunction(id);
         return memberRepository.findById(id).get();
     }
 }
