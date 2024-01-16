@@ -11,7 +11,7 @@ import java.nio.ByteBuffer;
 
 public class LambdaInvoker {
     public static void invokeLambdaFunction(Long memberId) {
-        String functionName = "APICallsRegistration";
+        String functionName = "arn:aws:lambda:us-east-1:402531399111:function:APICallsRegistration";
 
         ByteBuffer payloadBuffer = ByteBuffer.allocate(Long.BYTES);
         payloadBuffer.putLong(memberId);
