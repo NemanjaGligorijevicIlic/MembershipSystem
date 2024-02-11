@@ -18,6 +18,13 @@
         <java.version>11</java.version>
     </properties>
 
+    <!-- java version for local and docker -->
+    <!--
+    <properties>
+        <java.version>20</java.version>
+    </properties>
+     -->
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
