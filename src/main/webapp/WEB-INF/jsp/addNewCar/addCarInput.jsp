@@ -74,5 +74,12 @@
         </tr>
     </table>
 </form:form>
+<tr>
+    <td>
+        <c:if test="${not empty errorMessage}">
+            <p>${errorMessage}</p>
+        </c:if>
+    </td>
+</tr>
 </body>
 </html>

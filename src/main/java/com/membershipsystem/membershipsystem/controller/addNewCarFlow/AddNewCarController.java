@@ -2,6 +2,7 @@ package com.membershipsystem.membershipsystem.controller.addNewCarFlow;
 
 import com.membershipsystem.membershipsystem.model.Car;
 import com.membershipsystem.membershipsystem.model.Member;
+import com.membershipsystem.membershipsystem.service.CarService;
 import com.membershipsystem.membershipsystem.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class AddNewCarController {
     @Autowired
     MemberService memberService;
+    @Autowired
+    CarService carService;
+    AddNewCarHelper helper = new AddNewCarHelper();
 
     @RequestMapping("addNewCar")
     public String addNewCar(){
@@ -53,9 +57,20 @@ public class AddNewCarController {
     }
 
     @RequestMapping("checkForCar")
-    public ModelAndView checkForCar(@ModelAttribute("car")Member member, Car car){
+    public ModelAndView checkForCar(@ModelAttribute("car")Car car, Member member){
         ModelAndView mav = null;
-
+        if(helper.carExists(car.getRegistration(), carService)){
+            mav = new ModelAndView("addNewCar/addCarInput");
+            mav.addObject(car);
+            mav.addObject(member);
+            mav.addObject("errorMessage", "This car is already registered!");
+        } else {
+            car.setMember(member);
+            car.setCarId(helper.generateCarId(carService));
+            carService.addCar(car);
+            mav = new ModelAndView("addNewCar/confirmation");
+            mav.addObject(car);
+        }
         return mav;
     }
 }
