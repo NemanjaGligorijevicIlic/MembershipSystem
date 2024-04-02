@@ -68,7 +68,8 @@ public class AddNewCarController {
             car.setMember(member);
             car.setCarId(helper.generateCarId(carService));
             carService.addCar(car);
-            mav = new ModelAndView("addNewCar/confirmation");
+            mav = new ModelAndView("addNewCar/confirmNewCar");
+            mav.addObject(member);
             mav.addObject(car);
         }
         return mav;
