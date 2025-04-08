@@ -3,9 +3,9 @@ package org.example;
 import java.sql.*;
 
 public class APICallsRegistration {
-    private static final String RDS_JDBC_URL = "jdbc:mysql://membershipsystemdb.clgbxjdigu3v.us-east-1.rds.amazonaws.com:3306/MembershipSystemDB";
-    private static final String RDS_USERNAME = "Nemanja";
-    private static final String RDS_PASSWORD = "Pecopeco1.";
+    private static final String RDS_JDBC_URL = "TYPE_YOUR_VALUE";
+    private static final String RDS_USERNAME = "TYPE_YOUR_VALUE";
+    private static final String RDS_PASSWORD = "TYPE_YOUR_VALUE";
 
     public void handleRequest(Long memberId) {
         try (Connection connection = DriverManager.getConnection(RDS_JDBC_URL, RDS_USERNAME, RDS_PASSWORD)) {

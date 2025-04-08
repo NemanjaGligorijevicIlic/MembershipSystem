@@ -11,18 +11,18 @@ import software.amazon.awssdk.services.lambda.model.InvokeResponse;
 import java.nio.ByteBuffer;
 
 public class LambdaInvoker {
-    private static final String ACCESS_KEY = "AKIAV3OF5WXD5TBPDWHE";
-    private static final String SECRET_KEY = "TiiKwyQhbHlzn8NkApxCGAMpZYpOQkDiQTZ3kVuF";
+    private static final String ACCESS_KEY = "TYPE_YOUR_VALUE";
+    private static final String SECRET_KEY = "TYPE_YOUR_VALUE";
 
     public static void invokeLambdaFunction(Long memberId) {
         try {
-            String functionName = "arn:aws:lambda:us-east-1:402531399111:function:APICallsRegistration";
+            String functionName = "TYPE_YOUR_VALUE";
 
             AwsBasicCredentials awsCredentials = AwsBasicCredentials.create(ACCESS_KEY, SECRET_KEY);
 
             LambdaClient lambdaClient = LambdaClient.builder()
                     .region(Region.US_EAST_1)
-                    .credentialsProvider(() -> awsCredentials)
+                    //.credentialsProvider(() -> awsCredentials)
                     .build();
 
             SdkBytes payload = SdkBytes.fromUtf8String(String.valueOf(memberId));
